@@ -6,9 +6,17 @@ from .models import ToDo
 # Create your views here.
 # Функции представления мы тут пишем
 
+
 def index(request):
     todos = ToDo.objects.all()
-    return render(request, 'todoapp/index.html', {'todo_list': todos, 'title': 'Главная страница'})
+    return render(request, 'todoapp/index.html', {'todo_list': todos, 'title': 'Задачи'})
+
+
+def main(request):
+    context = {
+        'image_path': 'todolist/img/fon_todo.jpg'
+    }
+    return render(request, 'todoapp/main.html')
 
 
 @require_http_methods(['POST'])
